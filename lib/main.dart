@@ -143,15 +143,25 @@ class Search extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.fromLTRB(12, 8, 12, 8),
-      color: Colors.amberAccent,
       child: TextField(
           decoration: new InputDecoration(
             contentPadding: EdgeInsets.all(12),
-            border: InputBorder.none,
+            border: border,
+            focusedBorder: border,
+            enabledBorder: border,
             hintText: 'Search',
-            prefixIcon: Icon(Icons.search)
+              prefixIcon: Icon(Icons.search,
+                color: Colors.white,)
           )
       ),
     );
   }
+
+  final border = OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(30.0)),
+      borderSide: BorderSide(
+        width: 2,
+        color: Colors.yellow,
+      )
+  );
 }
