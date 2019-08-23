@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:zenius_mobile_app/form_validator.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Main());
 
-class MyApp extends StatelessWidget {
+class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +23,7 @@ class HomeView extends StatelessWidget {
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
-                expandedHeight: 80,
+                expandedHeight: 110,
                 pinned: true,
                 floating: false,
                 flexibleSpace: FlexibleSpaceBar(
@@ -32,7 +33,7 @@ class HomeView extends StatelessWidget {
                     width: 90,
                   ),
                   background: Image.network(
-                    "https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg?auto=compress&cs=tinysrgb&h=350",
+                    "https://www.redwallpapers.com/public/redwallpapers-large-thumb/polygonal-triangles-shades-yellow-background-geometric-free-stock-photos-images-hd-wallpaper.jpg",
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -55,18 +56,47 @@ class BodyHome extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  margin: EdgeInsets.fromLTRB(12, 8, 12, 0),
-                  child: Text("Hi, Fakhri Abdullah"),
-                ),
                 Identity(),
                 Search(),
               ],
             )
+        ),
+        Category(),
+        Container(
+          margin: EdgeInsets.all(18),
+          child: RaisedButton(
+              textColor: Colors.white,
+              color: Colors.orange,
+              child: Text('Go to Form Validation'),
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => FormValidator()));
+              }),
         )
       ],
     );
   }
+}
+
+class Recommendation extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        children: <Widget>[
+          Container(
+              width: 160,
+              child: Card(
+                  child: Column(
+                    children: <Widget>[
+                      Image.asset('assets/eduk.png'),
+                      Text("HALOOO")
+                    ],
+                  )))
+        ]
+    );
+  }
+
 }
 
 class Identity extends StatelessWidget {
@@ -75,12 +105,13 @@ class Identity extends StatelessWidget {
     return Card(
         color: Colors.amberAccent,
         elevation: 0,
-        margin: EdgeInsets.fromLTRB(12, 4, 12, 4),
+        margin: EdgeInsets.fromLTRB(12, 12, 12, 4),
         child: Padding(
           padding: EdgeInsets.all(8),
           child: Row(
             children: <Widget>[
-              Flexible(child: Image.asset("assets/logo-zenius.png"), flex: 1),
+//              Flexible(child: Icon(Icons.person_outline, color: Colors.white,),
+//                  flex: 1),
               Flexible(
                   child: Padding(
                       padding: EdgeInsets.fromLTRB(8, 0, 0, 0),
@@ -145,11 +176,11 @@ class Search extends StatelessWidget {
       margin: EdgeInsets.fromLTRB(12, 8, 12, 8),
       child: TextField(
           decoration: new InputDecoration(
-            contentPadding: EdgeInsets.all(12),
-            border: border,
-            focusedBorder: border,
-            enabledBorder: border,
-            hintText: 'Search',
+              contentPadding: EdgeInsets.all(12),
+              border: border,
+              focusedBorder: border,
+              enabledBorder: border,
+              hintText: 'Search',
               prefixIcon: Icon(Icons.search,
                 color: Colors.white,)
           )
@@ -164,4 +195,124 @@ class Search extends StatelessWidget {
         color: Colors.yellow,
       )
   );
+}
+
+class Category extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        margin: EdgeInsets.fromLTRB(8, 12, 8, 12),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+                child: Column(
+                    children: <Widget>[
+                      Card(
+                        elevation: 0,
+                        clipBehavior: Clip.hardEdge,
+                        color: Colors.blueGrey,
+                        child: new FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Icon(
+                              Icons.library_books,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text("Belajar", textAlign: TextAlign.center)
+                    ]
+                ),
+                flex: 1),
+            Expanded(
+                child: Column(
+                    children: <Widget>[
+                      Card(
+                        clipBehavior: Clip.hardEdge,
+                        color: Colors.blueGrey,
+                        child: new FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Icon(
+                              Icons.assignment,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text("UN", textAlign: TextAlign.center)
+                    ]
+                ),
+                flex: 1),
+            Expanded(
+                child: Column(
+                    children: <Widget>[
+                      Card(
+                        clipBehavior: Clip.hardEdge,
+                        color: Colors.blueGrey,
+                        child: new FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Icon(
+                              Icons.assignment_ind,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text("UTBK", textAlign: TextAlign.center)
+                    ]
+                ),
+                flex: 1),
+            Expanded(
+                child: Column(
+                    children: <Widget>[
+                      Card(
+                        clipBehavior: Clip.hardEdge,
+                        color: Colors.blueGrey,
+                        child: new FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Icon(
+                              Icons.book,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text("Mandiri", textAlign: TextAlign.center)
+                    ]
+                ),
+                flex: 1),
+            Expanded(
+                child: Column(
+                    children: <Widget>[
+                      Card(
+                        clipBehavior: Clip.hardEdge,
+                        color: Colors.blueGrey,
+                        child: new FittedBox(
+                          fit: BoxFit.fill,
+                          child: Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Icon(
+                              Icons.search,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      Text("Insight", textAlign: TextAlign.center)
+                    ]
+                ),
+                flex: 1),
+          ],
+        )
+    );
+  }
+
 }
